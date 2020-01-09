@@ -25,16 +25,16 @@ This is a 'demo' version of the original project. I have removed the web scrapin
 
 Streamlit is an exciting and user-friendly platform built for Data Scientists who seek a professional avenue to display projects without the need to learn additional programming skills. I am not associated with or endorsed by Streamlit but suggest others try it out to experience it as well. With that said, this project will not work properly without first installing [Streamlit](https://www.streamlit.io/). 
 
-The rest is simple: 
-* Enter a position of interest (limited to tech positions for now). 
+**The rest is simple:**
+#### Enter a position of interest (limited to tech positions for now).* 
 ![Search Bar](Search_Bar.png)
-* Examine the database results from previous data mining as well as the real-time web scraping of current results. 
+#### Examine the database results from previous data mining as well as the real-time web scraping of current results. 
 ![Results](First_Results.png)
-* Explore the locations of the random samples across the US. 
+#### Explore the locations of the random samples across the US. 
 ![Random Sampling](Location_Map.png)
-* Examine the emerging technologies identified by the NLP/Deep Learning algorithm. 
+#### Examine the emerging technologies identified by the NLP/Deep Learning algorithm. 
 ![Emerging Tech](Emerging_Tech.png)
-* Notice the trends over time for particular skills related to the position of interest. 
+#### Notice the trends over time for particular skills related to the position of interest. 
 ![Skill Trends](Skill_Trend.png)
 
  
