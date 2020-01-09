@@ -19,11 +19,11 @@ This project seeks to create opportunities and solve challenges for:
 
 ![Methodology](Methodology.png)
 
-# How-to Guide
+## How-to Guide
 
 This is a 'demo' version of the original project. I have removed the web scraping applications to avoid overloading LinkedIn/Indeed servers but I'm happy to share that code as well. 
 
-Streamlit is an exciting and user-friendly platform built for Data Scientists who seek a professional avenue to display projects without the need to learn additional programming skills. I am not associated with or endorsed by Streamlit but suggest others try it out to experience it as well. With that said, this project will not work properly without first installing [Streamlit](https://www.streamlit.io/). 
+Streamlit is an exciting and user-friendly platform built for Data Scientists who seek a professional avenue to display projects without the need to learn additional programming skills. I am not associated with or endorsed by Streamlit but suggest others try it out to experience it as well. With that said, this project will not work as intended without first installing [Streamlit](https://www.streamlit.io/). 
 
 **The rest is simple:**
 #### Enter a position of interest (limited to tech positions for now).* 
@@ -39,10 +39,3 @@ Streamlit is an exciting and user-friendly platform built for Data Scientists wh
 
  
 
-# Summary
-
-The Capstone Project and project review are the most critical part of the program. They give you a chance to both bring together all the skills you've learned into realistic projects and to practice key "business judgement" and communication skills that you otherwise might not get as much practice with.  Most importantly, they provide employers with very strong signal about your technical abilities, and allow you to show the world what an amazing Data Scientist you've become!
-
-The projects are serious and important. They are not graded, but they can be passed and they can be failed. Take the project seriously, put the time in, ask for help from your peers or instructors early and often if you need it, and treat the review as a job interview and you'll do great. We're rooting for you to succeed and we're only going to ask you to take a review again if we believe that you need to. We'll also provide open and honest feedback so you can improve as quickly and efficiently as possible.
-
-We don't expect you to remember all of the terms or to get all of the answers right. If in doubt, be honest. If you don't know something, say so. If you can't remember it, just say so. It's very unusual for someone to complete a project review without being asked a question they're unsure of, we know you might be nervous which may affect your performance. Just be as honest, precise and focused as you can be, and you'll do great!
