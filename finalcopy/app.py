@@ -1,5 +1,5 @@
 # Final Project
-
+import random
 import os
 import logging
 import pandas
@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import numpy as np
 import math
+
 import re
 import glob
 import random
@@ -16,6 +17,7 @@ import seaborn as sns
 import string
 from PIL import Image
 from IPython.display import clear_output
+from operator import itemgetter, attrgetter
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -25,6 +27,7 @@ from nltk.corpus import stopwords
 import string
 from nltk import word_tokenize, FreqDist
 from sklearn.feature_extraction.text import TfidfVectorizer
+
 import altair as alt
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
@@ -56,6 +59,7 @@ from nltk.corpus import stopwords
 from nltk.wsd import lesk
 import SessionState
 
+random.seed(123)
 search_terms = terms.total_terms
 
 st.title('Predicting Technology Trends')
@@ -65,11 +69,12 @@ option = st.sidebar.text_input('Enter position title: ', value=session_state.a, 
 dtotal = pd.read_csv('cleaned_df.csv')
 
 
-submit = st.sidebar.button('Search: ', key=1)
-if submit == True:
+submit = st.sidebar.button('Search', key=1)
+if submit:
     session_state.a = option
+try:
     dtotal= dtotal[dtotal['title'].astype(str).str.contains(option)]
-else:
+except:
     pass
 
 total_length = len(dtotal)
@@ -93,6 +98,7 @@ total_result_chart = total_result.sort_values('Percentage', ascending=False).hea
 
 
 periods = len(total_resulty)
+    
 date1 = dtotal.date
 date1 = date1.replace({'date': "12-15-2019"})
 date1 = pd.to_datetime(date1, format="%m-%d-%Y")
@@ -238,9 +244,10 @@ data = pd.read_csv('cleaned_df.csv')
 
 if submit:
     session_state.b = option
+try:
     dtitle = data[data['title'].astype(str).str.contains(option)]
-else:
-    dtitle = data[data['title'].astype(str).str.contains(option)]
+except:
+    pass
 
 
 search_terms = terms.total_terms
@@ -276,7 +283,7 @@ for i in range(len(words_tokens)-words):
 
 curr_sequence = ' '.join(words_tokens[0:words])
 output = curr_sequence
-for i in range(100):
+for i in range(1000):
     if curr_sequence not in ngrams.keys():
         break
     possible_words = ngrams[curr_sequence]
@@ -339,8 +346,8 @@ fig.update_layout(title="<b>Emerging Technology:</b>", font=dict(size=18),xaxis_
     xaxis_tickangle=-45,
     xaxis = dict(
         tickmode = 'array',
-        tickvals = [0,1,2,3,4,5,6,7,8,9],
-        ticktext = [x_label[0], x_label[1], x_label[2], x_label[3], x_label[4], x_label[5], x_label[6], x_label[7], x_label[8],x_label[9]]))
+        tickvals = [x for x in range(len(x_label[:]))],
+        ticktext = [x_label[x] for x in range(len(x_label[:]))]))
 fig.update_xaxes(ticks="outside", tickwidth=2, tickcolor='rgb(250, 20, 160)', ticklen=10,)
 fig.update_yaxes(ticksuffix="%", rangemode="tozero", ticks="outside", tickwidth=2, tickcolor='rgb(250, 20, 160)', ticklen=10)        
 st.plotly_chart(fig)
@@ -352,24 +359,31 @@ searchy = terms.total_terms
 skill = st.sidebar.selectbox('Skill Comparison: ', options=searchy, index=3)
 if submit:
     session_state.c = skill
+try:
     ts_graph = time_series[time_series['Title'].astype(str).str.contains(option)]
-else:
-    ts_graph = time_series[time_series['Title'].astype(str).str.contains(option)]
+except:
+    pass
+
 
 ts_graph2 = ts_graph[ts_graph['Tech'].astype(str).str.contains(skill.lower())]
 ts_graph3 = ts_graph2.groupby(['Date','Tech','Title'], as_index=False)['Percentage'].mean()
+
+
 ts_date = pd.to_datetime(ts_graph3['Date'], format="%m-%d-%Y")
 ts_date2 = ts_date.dt.strftime('%b %d, %Y')
+# ts_date2 = sorted(ts_date2, key=itemgetter(2,1))
+ts_date2 = sorted(ts_date2, key=itemgetter(-1, 0), reverse=True)
 fig = go.Figure(data=[go.Scatter(x=ts_date2,y=ts_graph3['Percentage'])])
 fig.update_layout(title="<b>Trend:</b>" + skill, font=dict(size=18), yaxis=dict(title='Skill Distribution', titlefont_size=16, tickfont_size=14), 
     xaxis_tickangle=-45,
     xaxis = dict(title='Date', titlefont_size=16, tickfont_size=12,
-        tickmode = 'linear',
-        tick0 = [ts_date2.min(axis=0)],
-        dtick = 1.0,
+        tickmode = 'auto',
+        # tick0 = [ts_date2[0]],
+        nticks = 10,
+        # dtick = 3.0,
         ))
-fig.update_xaxes(ticks="outside", tickwidth=2, tickcolor='rgb(250, 20, 160)', ticklen=10,)
-fig.update_yaxes(ticksuffix="%", rangemode="tozero", ticks="outside", tickwidth=2, tickcolor='rgb(250, 20, 160)', ticklen=10)           
+fig.update_xaxes(ticks="outside", tickwidth=2, tickcolor='rgb(250, 20, 160)', ticklen=10, )
+fig.update_yaxes(ticksuffix="%", rangemode="tozero", range=[0, 25], ticks="outside", tickwidth=2, tickcolor='rgb(250, 20, 160)', ticklen=10)           
 st.plotly_chart(fig)
 
 

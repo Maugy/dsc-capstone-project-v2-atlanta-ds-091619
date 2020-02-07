@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import numpy as np
 import math
-import matplotlib.pyplot as plt
+
 import re
 import glob
 import random
@@ -27,7 +27,7 @@ from nltk.corpus import stopwords
 import string
 from nltk import word_tokenize, FreqDist
 from sklearn.feature_extraction.text import TfidfVectorizer
-import matplotlib.pyplot as plt
+
 import altair as alt
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
