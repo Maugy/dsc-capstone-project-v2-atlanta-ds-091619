@@ -13,7 +13,6 @@ import math
 import re
 import glob
 import random
-import seaborn as sns
 import string
 from PIL import Image
 from IPython.display import clear_output
