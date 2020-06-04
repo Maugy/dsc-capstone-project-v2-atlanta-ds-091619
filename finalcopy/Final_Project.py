@@ -61,13 +61,13 @@ from nltk.corpus import wordnet as wn
 from nltk.corpus import stopwords
 from nltk.wsd import lesk
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/users/dmauger/Flatiron/FinalProject/WebScraping-676f89d97ac9.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = xxxx
 
-project_id = 'webscraping-261119'
+project_id = 'xxxx'
 dataset_id = 'Web_Scraping'
 bucket_name = 'web_scrape_data'
 gs_dir_path = 'https://storage.googleapis.com'
-local_dir_path = '/users/dmauger/Flatiron/FinalProject/'
+local_dir_path = 'xxxx'
 job_config = bigquery.LoadJobConfig()
 job_config.autodetect = True
 job_config.source_format = bigquery.SourceFormat.CSV
